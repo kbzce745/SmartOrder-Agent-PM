@@ -644,7 +644,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return { type: "clear_cart", qty: 1, priceNum: 0, nameZh: "清空购物车", nameKo: "장바구니 비우기" };
         }
 
-        const baseItem = menuCatalog[action.item_id];
+        let baseItem = menuCatalog[action.item_id];
+        if (!baseItem) {
+            const queryName = String(action.item_id || action.name || "").trim();
+            if (queryName) {
+                baseItem = Object.values(menuCatalog).find(
+                    (it) =>
+                        it.nameZh === queryName ||
+                        it.nameKo === queryName ||
+                        it.nameZh.includes(queryName) ||
+                        queryName.includes(it.nameZh.replace(/\(.*?\)|（.*?）/g, ""))
+                );
+            }
+        }
         if (!baseItem) return null;
 
         const qty = Math.min(Math.max(parseInt(action.qty, 10) || 1, 1), 20);

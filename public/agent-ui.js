@@ -325,7 +325,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Deterministically resolve actions against menuCatalog
-        const rawActions = Array.isArray(data.actions) ? data.actions : [];
+        let rawActions = Array.isArray(data.actions) ? data.actions : [];
+
+        // Double safety fallback: if LLM only wrote dish names in `data.reply` and left `actions` empty,
+        // automatically extract the mentioned dishes from `data.reply`!
+        if (rawActions.length === 0 && data.reply) {
+            const extractedFromReply = runLocalIntentEngine(data.reply);
+            if (Array.isArray(extractedFromReply.actions) && extractedFromReply.actions.length > 0) {
+                rawActions = extractedFromReply.actions;
+            }
+        }
+
         const resolvedActions = rawActions
             .map((act) => window.OrderApp.resolveAction(act))
             .filter(Boolean);
@@ -336,6 +346,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let totalKrw = 0;
             let itemsHtml = "";
+            const roomVal = data.room_no || window.OrderApp.getRoomNumber() || "待填写";
+            const receiptZhLines = ["【我的点单】", `门牌号: ${roomVal}`, "----------------"];
+            const receiptKoLines = ["【나의 주문】", `호수: ${roomVal}`, "----------------"];
 
             resolvedActions.forEach((item) => {
                 totalKrw += item.lineTotal || 0;
@@ -345,11 +358,22 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span>${(item.lineTotal || 0).toLocaleString()} KRW</span>
                     </div>
                 `;
+                receiptZhLines.push(`${item.qty}x ${item.nameZh} (${(item.lineTotal || 0).toLocaleString()})`);
+                receiptKoLines.push(`${item.qty}x ${item.nameKo} (${(item.lineTotal || 0).toLocaleString()})`);
             });
 
+            if (noteZh || noteKo) {
+                receiptZhLines.push("----------------", `备注: ${noteZh || noteKo}`);
+                receiptKoLines.push("----------------", `요청사항: ${noteKo || noteZh}`);
+            }
+            receiptZhLines.push("----------------", `总计: ${totalKrw.toLocaleString()} KRW`);
+            receiptKoLines.push("----------------", `총액: ${totalKrw.toLocaleString()} KRW`);
+
+            const fullBilingualTicket = `${receiptZhLines.join("\n")}\n\n${receiptKoLines.join("\n")}`;
+
             const modeTitle = data.mode === "recommend"
-                ? "AI 预算配餐方案 (前端确定性算价校验)"
-                : "点单动作与双语同步明细";
+                ? "AI 预算配餐方案与双语小票 (确定性算价)"
+                : "点单明细与中韩双语小票";
 
             let noteBlockHtml = "";
             if (data.room_no || noteZh || noteKo) {
@@ -361,6 +385,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
             }
+
+            const ticketPreviewHtml = resolvedActions.length > 0
+                ? `<details class="ai-ticket-details" open>
+                       <summary>中韩双语微信小票预览 (可直接复制发给老板)</summary>
+                       <pre class="ai-ticket-pre">${fullBilingualTicket}</pre>
+                   </details>`
+                : "";
 
             card.innerHTML = `
                 <div class="ai-card-header">
@@ -374,6 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 ` : ""}
                 ${noteBlockHtml}
+                ${ticketPreviewHtml}
             `;
 
             if (resolvedActions.length > 0) {
@@ -383,20 +415,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (data.mode === "auto_apply") {
                     window.OrderApp.applyResolvedActions(resolvedActions);
-                    actionBtn.textContent = "已自动加入购物车 (点击查看小票)";
-                    actionBtn.classList.add("applied");
+                    actionBtn.textContent = "已加入购物车 — 点击复制双语小票发微信";
                     actionBtn.addEventListener("click", () => {
-                        closeDrawer();
-                        document.getElementById("cart-overlay").classList.remove("hidden");
+                        navigator.clipboard.writeText(fullBilingualTicket).then(() => {
+                            window.OrderApp.showToast("双语小票已复制，请前往微信粘贴发送");
+                        });
                     });
                 } else {
-                    actionBtn.textContent = `一键采纳方案并加入购物车 (${totalKrw.toLocaleString()} KRW)`;
+                    actionBtn.textContent = `一键采纳加入购物车并复制双语小票 (${totalKrw.toLocaleString()} KRW)`;
                     actionBtn.addEventListener("click", () => {
-                        if (actionBtn.classList.contains("applied")) return;
-                        window.OrderApp.applyResolvedActions(resolvedActions);
-                        actionBtn.textContent = "已加入购物车";
-                        actionBtn.classList.add("applied");
-                        window.OrderApp.showToast("推荐套餐已加入购物车");
+                        if (!actionBtn.classList.contains("applied")) {
+                            window.OrderApp.applyResolvedActions(resolvedActions);
+                            actionBtn.classList.add("applied");
+                        }
+                        navigator.clipboard.writeText(fullBilingualTicket).then(() => {
+                            actionBtn.textContent = "已加入购物车并复制中韩双语小票";
+                            window.OrderApp.showToast("已加入购物车并复制双语小票，可直接粘贴至微信");
+                        });
                     });
                 }
                 card.appendChild(actionBtn);

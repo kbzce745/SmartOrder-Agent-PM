@@ -176,7 +176,7 @@ const STATIC_MENU_SYSTEM_PROMPT = `你是一家在韩中韩双语餐厅的智能
 
 【二、输出 JSON Schema 规范 (必须返回合法 JSON 对象)】
 {
-  "reply": "给顾客的简明中文回复（限80字以内，不带任何emoji，语气礼貌专业）",
+  "reply": "给顾客的一句话简短引导（限40字以内，严禁在reply里自己算总价或罗列菜名，不带任何emoji）",
   "mode": "auto_apply 或 recommend 或 note_only",
   "room_no": "如果顾客提到了房间号/门牌号则提取字符串，否则为空字符串",
   "order_note": {
@@ -186,7 +186,7 @@ const STATIC_MENU_SYSTEM_PROMPT = `你是一家在韩中韩双语餐厅的智能
   "actions": [
     {
       "type": "add_pizza | add_portion | add_standard | clear_cart",
-      "item_id": "对应上方菜单的 id",
+      "item_id": "必须严格填写上方菜单的英文 id (例如 pizza_quattro, chicken_whole_roast)",
       "qty": 1,
       "portion": "small 或 large (仅当 type=add_portion 时必填)",
       "size": "M 或 L (仅当 type=add_pizza 时必填，默认M)",
@@ -196,7 +196,12 @@ const STATIC_MENU_SYSTEM_PROMPT = `你是一家在韩中韩双语餐厅的智能
       "drinks": {}
     }
   ]
-}`;
+}
+
+【三、核心执行铁律（必须严格遵守）】
+1. 无论是明确加购 (mode="auto_apply") 还是预算配餐/推荐 (mode="recommend")，只要涉及任何菜品，【必须在 actions 数组中完整填入每一道菜品的结构化对象】！绝对禁止只在 reply 文字里写菜名而返回空的 "actions": []！
+2. 严禁在 reply 中自行心算总价（大模型心算容易出错，真实总价与中韩双语小票由前端根据 actions 数组自动生成）。
+3. 当顾客提出预算配餐（如“5人15万预算”）时，设 mode="recommend"，并在 actions 中合理配置菜品与数量（例如5人15万预算可配置 2~3 个大号L芝士饼边披萨 + 整只烤鸡 + 糖醋肉 + 大份水饺 + 多份主食与大瓶饮料，使组合真实总价接近预算上限但绝不超支）。`;
 
 export const handler = async (event) => {
   const headers = {
@@ -297,7 +302,7 @@ export const handler = async (event) => {
       body: JSON.stringify({
         model,
         temperature: 0.1,
-        max_tokens: 350,
+        max_tokens: 650,
         thinking: { type: "disabled" },
         response_format: { type: "json_object" },
         messages: [
