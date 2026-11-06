@@ -1,0 +1,831 @@
+[
+  {
+    "page_id": "page_1",
+    "category": "pizza",
+    "category_name": "手工披萨",
+    "category_ko": "피자",
+    "image": "images/1.jpg",
+    "items": [
+      {
+        "id": "pizza_bulgogi",
+        "name": "烤牛肉披萨",
+        "ko_name": "불고기 피자",
+        "price": "19,900",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["招牌", "牛肉", "不辣"]
+      },
+      {
+        "id": "pizza_bacon_potato",
+        "name": "培根黄油土豆披萨",
+        "ko_name": "베이컨 버터 포테이토 피자",
+        "price": "19,900",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["人气", "培根", "土豆", "不辣"]
+      },
+      {
+        "id": "pizza_combination",
+        "name": "什锦披萨",
+        "ko_name": "콤비네이션 피자",
+        "price": "19,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["经典", "聚餐推荐", "不辣"]
+      },
+      {
+        "id": "pizza_jalapeno_pasta",
+        "name": "辣椒意大利面披萨",
+        "ko_name": "할라피뇨 파스타 피자",
+        "price": "19,500",
+        "has_pizza_option": true,
+        "spicy": true,
+        "tags": ["微辣", "意面"]
+      },
+      {
+        "id": "pizza_shrimp",
+        "name": "大虾披萨",
+        "ko_name": "쉬림프 피자",
+        "price": "25,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["海鲜", "虾仁", "不辣"]
+      },
+      {
+        "id": "pizza_pepperoni",
+        "name": "意式辣香肠披萨",
+        "ko_name": "페퍼로니 피자",
+        "price": "18,500",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["经典", "香肠"]
+      },
+      {
+        "id": "pizza_all_meat",
+        "name": "全肉披萨",
+        "ko_name": "올미트 피자",
+        "price": "24,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["肉食", "聚餐推荐", "不辣"]
+      },
+      {
+        "id": "pizza_sweet_potato",
+        "name": "红薯披萨",
+        "ko_name": "고구마 피자",
+        "price": "20,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["韩式特色", "香甜", "不辣"]
+      },
+      {
+        "id": "pizza_corn_shrimp",
+        "name": "玉米虾仁披萨",
+        "ko_name": "옥수수 새우 피자",
+        "price": "24,500",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["海鲜", "香甜", "不辣"]
+      }
+    ],
+    "raw_text": "烤牛肉披萨 19,900 培根黄油土豆披萨 19,900 什锦披萨 19,000 辣椒意大利面披萨 19,500 大虾披萨 25,000 意式辣香肠披萨 18,500 全肉披萨 24,000 红薯披萨 20,000 玉米虾仁披萨 24,500"
+  },
+  {
+    "page_id": "page_2",
+    "category": "pizza",
+    "category_name": "手工披萨",
+    "category_ko": "피자",
+    "image": "images/2.jpg",
+    "items": [
+      {
+        "id": "pizza_volcano_chicken",
+        "name": "火山辣鸡披萨",
+        "ko_name": "볼케이노 핫치킨 피자",
+        "price": "19,900",
+        "has_pizza_option": true,
+        "spicy": true,
+        "tags": ["香辣", "鸡肉"]
+      },
+      {
+        "id": "pizza_corn_bacon",
+        "name": "玉米培根披萨",
+        "ko_name": "콘 베이컨 피자",
+        "price": "22,500",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["培根", "玉米", "不辣"]
+      },
+      {
+        "id": "pizza_gorgonzola",
+        "name": "戈贡佐拉披萨",
+        "ko_name": "고르곤졸라 피자",
+        "price": "19,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["芝士", "薄饼推荐", "不辣"]
+      },
+      {
+        "id": "pizza_quattro",
+        "name": "四种披萨",
+        "ko_name": "콰트로 피자",
+        "price": "23,500",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["四拼", "聚餐推荐", "不辣"]
+      },
+      {
+        "id": "pizza_pineapple_bacon",
+        "name": "菠萝培根披萨",
+        "ko_name": "파인애플 베이컨 피자",
+        "price": "19,500",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["酸甜", "不辣"]
+      },
+      {
+        "id": "pizza_half_half",
+        "name": "一半一半披萨",
+        "ko_name": "하프앤하프 피자",
+        "price": "18,500",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["双拼", "高性价比"]
+      },
+      {
+        "id": "pizza_meat_king_cutlet",
+        "name": "肉食王猪排披萨",
+        "ko_name": "미트킹 돈까스 피자",
+        "price": "23,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["猪排", "肉食", "不辣"]
+      },
+      {
+        "id": "pizza_cheese_waterfall",
+        "name": "芝士瀑布披萨",
+        "ko_name": "치즈 폭포 피자",
+        "price": "18,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["浓厚芝士", "不辣"]
+      },
+      {
+        "id": "pizza_cream_cheeseball_sweet_potato",
+        "name": "奶油芝士球红薯披萨",
+        "ko_name": "크림 치즈볼 고구마 피자",
+        "price": "19,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["芝士球", "红薯", "不辣"]
+      }
+    ],
+    "raw_text": "火山辣鸡披萨 19,900 玉米培根披萨 22,500 戈贡佐拉披萨 19,000 四种披萨 23,500 菠萝培根披萨 19,500 一半一半披萨 18,500 肉食王猪排披萨 23,000 芝士瀑布披萨 18,000 奶油芝士球红薯披萨 19,000"
+  },
+  {
+    "page_id": "page_3",
+    "category": "pizza",
+    "category_name": "手工披萨",
+    "category_ko": "피자",
+    "image": "images/3.jpg",
+    "items": [
+      {
+        "id": "pizza_margherita",
+        "name": "马罗戈基披萨",
+        "ko_name": "마르게리타 피자",
+        "price": "20,000",
+        "has_pizza_option": true,
+        "spicy": false,
+        "tags": ["玛格丽特", "番茄芝士", "不辣"]
+      }
+    ],
+    "raw_text": "马罗戈基披萨 20,000"
+  },
+  {
+    "page_id": "page_4",
+    "category": "rice",
+    "category_name": "盖饭与炒饭",
+    "category_ko": "볶음밥/덮밥",
+    "image": "images/4.jpg",
+    "items": [
+      {
+        "id": "rice_duck",
+        "name": "鸭肉盖饭",
+        "ko_name": "오리고기 덮밥",
+        "price": "8,500",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "盖饭", "不辣"]
+      },
+      {
+        "id": "rice_spicy_pork",
+        "name": "猪肉盖饭",
+        "ko_name": "제육 덮밥",
+        "price": "8,500",
+        "has_size_option": true,
+        "spicy": true,
+        "tags": ["主食", "盖饭", "微辣"]
+      },
+      {
+        "id": "rice_beef",
+        "name": "牛肉盖饭",
+        "ko_name": "소고기 덮밥",
+        "price": "9,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "盖饭", "不辣"]
+      },
+      {
+        "id": "rice_chicken",
+        "name": "鸡肉盖饭",
+        "ko_name": "닭고기 덮밥",
+        "price": "8,500",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "盖饭", "不辣"]
+      },
+      {
+        "id": "rice_curry_chicken_fried",
+        "name": "咖喱鸡肉炒饭",
+        "ko_name": "카레 닭고기 볶음밥",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "炒饭", "不辣"]
+      },
+      {
+        "id": "rice_kimchi_beef",
+        "name": "泡菜牛肉盖饭",
+        "ko_name": "김치 소고기 덮밥",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": true,
+        "tags": ["主食", "盖饭", "微辣"]
+      },
+      {
+        "id": "rice_shrimp_fried",
+        "name": "虾仁炒饭",
+        "ko_name": "새우 볶음밥",
+        "price": "7,500",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "炒饭", "人气", "不辣"]
+      },
+      {
+        "id": "rice_mala_octopus_fried",
+        "name": "麻辣章鱼炒饭",
+        "ko_name": "마라 낙지 볶음밥",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": true,
+        "tags": ["主食", "炒饭", "麻辣"]
+      },
+      {
+        "id": "rice_bulgogi_bibimbap",
+        "name": "烤牛肉拌饭",
+        "ko_name": "불고기 비빔밥",
+        "price": "7,500",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "拌饭", "不辣"]
+      }
+    ],
+    "raw_text": "鸭肉盖饭 8,500 猪肉盖饭 8,500 牛肉盖饭 9,000 鸡肉盖饭 8,500 咖喱鸡肉炒饭 8,000 泡菜牛肉盖饭 8,000 虾仁炒饭 7,500 麻辣章鱼炒饭 8,000 烤牛肉拌饭 7,500"
+  },
+  {
+    "page_id": "page_5",
+    "category": "rice",
+    "category_name": "盖饭与炒饭",
+    "category_ko": "볶음밥/덮밥",
+    "image": "images/5.jpg",
+    "items": [
+      {
+        "id": "rice_chicken_fried",
+        "name": "鸡肉炒饭",
+        "ko_name": "닭고기 볶음밥",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "炒饭", "不辣"]
+      },
+      {
+        "id": "soup_beef",
+        "name": "牛肉汤",
+        "ko_name": "소고기 국",
+        "price": "13,000",
+        "spicy": false,
+        "tags": ["汤类", "热汤", "不辣"]
+      },
+      {
+        "id": "noodle_beef",
+        "name": "牛肉面",
+        "ko_name": "우육면",
+        "price": "13,000",
+        "spicy": false,
+        "tags": ["主食", "汤面", "招牌"]
+      },
+      {
+        "id": "rice_mala_beef_fried",
+        "name": "麻辣牛肉炒饭",
+        "ko_name": "마라 소고기 볶음밥",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": true,
+        "tags": ["主食", "炒饭", "麻辣"]
+      },
+      {
+        "id": "rice_lamb",
+        "name": "羊肉盖饭",
+        "ko_name": "양고기 덮밥",
+        "price": "10,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "盖饭", "羊肉"]
+      },
+      {
+        "id": "rice_tomato_egg",
+        "name": "番茄鸡蛋盖饭",
+        "ko_name": "토마토 달걀 덮밥",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "盖饭", "经典家常", "不辣"]
+      },
+      {
+        "id": "rice_sour_cabbage_pork",
+        "name": "酸菜五花肉盖饭",
+        "ko_name": "삼겹살 신김치 덮밥",
+        "price": "9,000",
+        "has_size_option": true,
+        "spicy": true,
+        "tags": ["主食", "盖饭", "开胃"]
+      },
+      {
+        "id": "cutlet_pork_meal",
+        "name": "炸猪排",
+        "ko_name": "돈까스",
+        "price": "9,000",
+        "spicy": false,
+        "tags": ["主菜", "猪排", "不辣"]
+      },
+      {
+        "id": "cutlet_cheese_pork",
+        "name": "芝士猪排",
+        "ko_name": "치즈 돈까스",
+        "price": "10,000",
+        "spicy": false,
+        "tags": ["主菜", "芝士", "不辣"]
+      }
+    ],
+    "raw_text": "鸡肉炒饭 8,000 牛肉汤 13,000 牛肉面 13,000 麻辣牛肉炒饭 8,000 羊肉盖饭 10,000 番茄鸡蛋盖饭 8,000 酸菜五花肉盖饭 9,000 炸猪排 9,000 芝士猪排 10,000"
+  },
+  {
+    "page_id": "page_6",
+    "category": "noodle",
+    "category_name": "年糕与意面",
+    "category_ko": "분식/파스타",
+    "image": "images/6.jpg",
+    "items": [
+      {
+        "id": "tteok_cheese",
+        "name": "特色芝士辣炒年糕",
+        "ko_name": "치즈 떡볶이",
+        "price": "8,000",
+        "spicy": true,
+        "tags": ["韩式小吃", "芝士", "辣"]
+      },
+      {
+        "id": "tteok_cream",
+        "name": "奶油辣炒年糕",
+        "ko_name": "크림 떡볶이",
+        "price": "8,000",
+        "spicy": false,
+        "tags": ["韩式小吃", "奶香", "微辣或不辣"]
+      },
+      {
+        "id": "pasta_cheese_oven",
+        "name": "芝士意面",
+        "ko_name": "치즈 오븐 파스타",
+        "price": "7,000",
+        "spicy": false,
+        "tags": ["主食", "意面", "不辣"]
+      },
+      {
+        "id": "pasta_cream",
+        "name": "奶油意面",
+        "ko_name": "크림 파스타",
+        "price": "8,000",
+        "spicy": false,
+        "tags": ["主食", "意面", "不辣"]
+      },
+      {
+        "id": "pasta_basil",
+        "name": "罗勒酱意面",
+        "ko_name": "바질 파스타",
+        "price": "8,000",
+        "spicy": false,
+        "tags": ["主食", "意面", "不辣"]
+      },
+      {
+        "id": "pasta_tomato",
+        "name": "番茄酱意面",
+        "ko_name": "토마토 파스타",
+        "price": "8,000",
+        "spicy": false,
+        "tags": ["主食", "意面", "不辣"]
+      },
+      {
+        "id": "noodle_cold",
+        "name": "水冷面",
+        "ko_name": "물냉면",
+        "price": "8,000",
+        "spicy": false,
+        "tags": ["主食", "冷面", "清爽"]
+      },
+      {
+        "id": "noodle_udon",
+        "name": "乌冬面",
+        "ko_name": "우동",
+        "price": "7,000",
+        "spicy": false,
+        "tags": ["主食", "汤面", "不辣"]
+      }
+    ],
+    "raw_text": "特色芝士辣炒年糕 8,000 奶油辣炒年糕 8,000 芝士意面 7,000 奶油意面 8,000 罗勒酱意面 8,000 番茄酱意面 8,000 水冷面 8,000 乌冬面 7,000"
+  },
+  {
+    "page_id": "page_7",
+    "category": "snack",
+    "category_name": "烤鸡与炸物",
+    "category_ko": "사이드/치킨",
+    "image": "images/7.jpg",
+    "items": [
+      {
+        "id": "chicken_roasted_wings",
+        "name": "烤翅中",
+        "ko_name": "구운 닭날개",
+        "price": "6,500",
+        "spicy": false,
+        "tags": ["小吃", "烤鸡", "不辣"]
+      },
+      {
+        "id": "chicken_roasted_leg",
+        "name": "烤鸡腿",
+        "ko_name": "구운 닭다리",
+        "price": "3,500",
+        "spicy": false,
+        "tags": ["小吃", "烤鸡", "单人加菜", "不辣"]
+      },
+      {
+        "id": "chicken_spicy_legs_2",
+        "name": "辣味鸡腿(2块)",
+        "ko_name": "매운 닭다리 (2조각)",
+        "price": "6,500",
+        "spicy": true,
+        "tags": ["小吃", "香辣"]
+      },
+      {
+        "id": "chicken_boneless",
+        "name": "无骨炸鸡块",
+        "ko_name": "순살 치킨",
+        "price": "6,000",
+        "spicy": false,
+        "tags": ["人气", "炸鸡", "聚餐推荐", "不辣"]
+      },
+      {
+        "id": "chicken_whole_roast",
+        "name": "烤鸡(整只)",
+        "ko_name": "로스트 치킨 (한 마리)",
+        "price": "15,000",
+        "spicy": false,
+        "tags": ["主菜", "聚餐推荐", "烤鸡", "不辣"]
+      },
+      {
+        "id": "chicken_half_roast",
+        "name": "烤鸡(半只)",
+        "ko_name": "로스트 치킨 (반 마리)",
+        "price": "8,000",
+        "spicy": false,
+        "tags": ["烤鸡", "不辣"]
+      },
+      {
+        "id": "chicken_tenders",
+        "name": "鸡柳",
+        "ko_name": "치킨 텐더",
+        "price": "6,000",
+        "spicy": false,
+        "tags": ["小吃", "炸鸡", "不辣"]
+      },
+      {
+        "id": "chicken_spicy_wings",
+        "name": "辣味火鸡翅",
+        "ko_name": "매운 핫윙",
+        "price": "7,500",
+        "spicy": true,
+        "tags": ["小吃", "香辣"]
+      },
+      {
+        "id": "chicken_spicy_feet",
+        "name": "辣炒无骨鸡爪",
+        "ko_name": "매운 뼈없는 닭발",
+        "price": "8,000",
+        "spicy": true,
+        "tags": ["下酒菜", "香辣"]
+      }
+    ],
+    "raw_text": "烤翅中 6,500 烤鸡腿 3,500 辣味鸡腿(2块) 6,500 无骨炸鸡块 6,000 烤鸡(整只) 15,000 烤鸡(半只) 8,000 鸡柳 6,000 辣味火鸡翅 7,500 辣炒无骨鸡爪 8,000"
+  },
+  {
+    "page_id": "page_8",
+    "category": "snack",
+    "category_name": "烤鸡与炸物",
+    "category_ko": "사이드/치킨",
+    "image": "images/8_1.jpg",
+    "items": [
+      {
+        "id": "snack_shrimp_ring",
+        "name": "炸虾圈",
+        "ko_name": "새우링 튀김",
+        "price": "6,000",
+        "spicy": false,
+        "tags": ["小吃", "海鲜", "不辣"]
+      },
+      {
+        "id": "snack_tangsuyuk",
+        "name": "糖醋肉",
+        "ko_name": "탕수육",
+        "price": "10,000",
+        "spicy": false,
+        "tags": ["招牌", "酸甜", "聚餐推荐", "不辣"]
+      },
+      {
+        "id": "snack_fried_dumplings",
+        "name": "炸饺子",
+        "ko_name": "군만두",
+        "price": "5,000",
+        "spicy": false,
+        "tags": ["小吃", "煎炸", "不辣"]
+      },
+      {
+        "id": "snack_fried_shrimp_4",
+        "name": "炸虾(4个)",
+        "ko_name": "새우튀김 (4개)",
+        "price": "6,000",
+        "spicy": false,
+        "tags": ["小吃", "不辣"]
+      },
+      {
+        "id": "snack_fried_tteok",
+        "name": "炸年糕",
+        "ko_name": "떡 튀김",
+        "price": "3,000",
+        "spicy": false,
+        "tags": ["小吃", "凑单推荐", "不辣"]
+      },
+      {
+        "id": "snack_mini_cutlet",
+        "name": "炸猪排(小食)",
+        "ko_name": "미니 돈까스",
+        "price": "2,000",
+        "spicy": false,
+        "tags": ["小吃", "凑单推荐", "不辣"]
+      },
+      {
+        "id": "snack_cheese_balls",
+        "name": "炸芝士球",
+        "ko_name": "치즈볼 튀김",
+        "price": "4,000",
+        "spicy": false,
+        "tags": ["人气", "芝士", "凑单推荐", "不辣"]
+      },
+      {
+        "id": "snack_takoyaki",
+        "name": "章鱼小丸子",
+        "ko_name": "타코야끼",
+        "price": "7,000",
+        "spicy": false,
+        "tags": ["小吃", "不辣"]
+      },
+      {
+        "id": "snack_popcorn_chicken",
+        "name": "鸡米花",
+        "ko_name": "팝콘 치킨",
+        "price": "6,000",
+        "spicy": false,
+        "tags": ["小吃", "炸鸡", "不辣"]
+      }
+    ],
+    "raw_text": "炸虾圈 6,000 糖醋肉 10,000 炸饺子 5,000 炸虾（4个） 6,000 炸年糕 3,000 炸猪排 2,000 炸芝士球 4,000 章鱼小丸子 7,000 鸡米花 6,000"
+  },
+  {
+    "page_id": "page_9",
+    "category": "dumpling",
+    "category_name": "水饺与点心",
+    "category_ko": "만두",
+    "image": "images/9.jpg",
+    "items": [
+      {
+        "id": "dumpling_chive_pork",
+        "name": "韭菜肉饺子",
+        "ko_name": "부추 고기 만두",
+        "price": "7,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "水饺", "不辣"]
+      },
+      {
+        "id": "dumpling_sour_cabbage",
+        "name": "酸菜猪肉饺子",
+        "ko_name": "쏸차이 돼지고기 만두",
+        "price": "7,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "水饺", "不辣"]
+      },
+      {
+        "id": "dumpling_celery",
+        "name": "芹菜水饺",
+        "ko_name": "샐러리 물만두",
+        "price": "7,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "水饺", "不辣"]
+      },
+      {
+        "id": "dumpling_wonton",
+        "name": "馄饨",
+        "ko_name": "훈툰",
+        "price": "7,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "带汤", "不辣"]
+      },
+      {
+        "id": "dumpling_xiaolongbao",
+        "name": "小笼包",
+        "ko_name": "샤오롱바오",
+        "price": "6,000",
+        "spicy": false,
+        "tags": ["主食", "点心", "不辣"]
+      },
+      {
+        "id": "dumpling_chive_egg",
+        "name": "韭菜鸡蛋水饺",
+        "ko_name": "부추 달걀 물만두",
+        "price": "8,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "水饺", "素馅", "不辣"]
+      },
+      {
+        "id": "dumpling_chive_egg_shrimp",
+        "name": "韭菜鸡蛋虾仁水饺",
+        "ko_name": "부추 달걀 새우 물만두",
+        "price": "9,000",
+        "has_size_option": true,
+        "spicy": false,
+        "tags": ["主食", "水饺", "海鲜", "不辣"]
+      }
+    ],
+    "raw_text": "韭菜肉饺子 7,000 酸菜猪肉饺子 7,000 芹菜水饺 7,000 馄饨 7,000 小笼包 6,000 韭菜鸡蛋水饺 8,000 韭菜鸡蛋虾仁水饺 9,000"
+  },
+  {
+    "page_id": "page_10",
+    "category": "drink",
+    "category_name": "饮品与咖啡",
+    "category_ko": "음료",
+    "image": "images/10.jpg",
+    "items": [
+      {
+        "id": "drink_milktea",
+        "name": "奶茶",
+        "ko_name": "밀크티",
+        "price": "2,800",
+        "spicy": false,
+        "tags": ["饮料", "甜饮"]
+      },
+      {
+        "id": "drink_coconut",
+        "name": "椰子饮料",
+        "ko_name": "코코넛 음료",
+        "price": "2,000",
+        "spicy": false,
+        "tags": ["饮料", "解腻"]
+      },
+      {
+        "id": "drink_hawthorn",
+        "name": "开卫山楂汁",
+        "ko_name": "산사나무 주스",
+        "price": "1,500",
+        "spicy": false,
+        "tags": ["饮料", "解腻", "酸甜"]
+      },
+      {
+        "id": "drink_sprite_can",
+        "name": "罐装雪碧",
+        "ko_name": "캔 스프라이트",
+        "price": "1,000",
+        "spicy": false,
+        "tags": ["饮料", "汽水", "凑单推荐"]
+      },
+      {
+        "id": "drink_sprite_500",
+        "name": "雪碧(500ml)",
+        "ko_name": "스프라이트 (500ml)",
+        "price": "2,000",
+        "spicy": false,
+        "tags": ["饮料", "汽水"]
+      },
+      {
+        "id": "drink_cola_can",
+        "name": "罐装可乐",
+        "ko_name": "캔 콜라",
+        "price": "1,000",
+        "spicy": false,
+        "tags": ["饮料", "汽水", "凑单推荐"]
+      },
+      {
+        "id": "drink_cola_500",
+        "name": "可乐(500ml)",
+        "ko_name": "콜라 (500ml)",
+        "price": "2,000",
+        "spicy": false,
+        "tags": ["饮料", "汽水"]
+      },
+      {
+        "id": "drink_fanta_500",
+        "name": "芬达(500ml)",
+        "ko_name": "환타 (500ml)",
+        "price": "2,000",
+        "spicy": false,
+        "tags": ["饮料", "汽水"]
+      }
+    ],
+    "raw_text": "奶茶 2,800 椰子饮料 2,000 开卫山楂汁 1,500 罐装雪碧 1,000 雪碧(500ml) 2,000 罐装可乐 1,000 可乐(500ml) 2,000 芬达(500ml) 2,000"
+  },
+  {
+    "page_id": "page_11",
+    "category": "drink",
+    "category_name": "饮品与咖啡",
+    "category_ko": "음료",
+    "image": "images/11.jpg",
+    "items": [
+      {
+        "id": "drink_americano",
+        "name": "美式咖啡",
+        "ko_name": "아메리카노",
+        "price": "2,000",
+        "spicy": false,
+        "tags": ["咖啡", "提神"]
+      },
+      {
+        "id": "drink_latte",
+        "name": "拿铁",
+        "ko_name": "카페 라떼",
+        "price": "4,000",
+        "spicy": false,
+        "tags": ["咖啡"]
+      },
+      {
+        "id": "drink_cappuccino",
+        "name": "卡布奇诺",
+        "ko_name": "카푸치노",
+        "price": "4,000",
+        "spicy": false,
+        "tags": ["咖啡"]
+      },
+      {
+        "id": "drink_lemon_icetea",
+        "name": "柠檬冰茶",
+        "ko_name": "레몬 아이스티",
+        "price": "4,000",
+        "spicy": false,
+        "tags": ["饮料", "清爽"]
+      },
+      {
+        "id": "drink_energy",
+        "name": "能量饮料",
+        "ko_name": "에너지 드링크",
+        "price": "3,500",
+        "spicy": false,
+        "tags": ["饮料"]
+      },
+      {
+        "id": "drink_cola_1250",
+        "name": "可乐(1.25L大瓶)",
+        "ko_name": "콜라 1.25L",
+        "price": "3,000",
+        "spicy": false,
+        "tags": ["饮料", "聚餐推荐"]
+      },
+      {
+        "id": "drink_sprite_1500",
+        "name": "雪碧(1.5L大瓶)",
+        "ko_name": "스프라이트 1.5L",
+        "price": "3,000",
+        "spicy": false,
+        "tags": ["饮料", "聚餐推荐"]
+      }
+    ],
+    "raw_text": "美式咖啡 2,000 拿铁 4,000 卡布奇诺 4,000 柠檬冰茶 4,000 能量饮料 3,500 可乐(1.25L大瓶) 3,000 雪碧(1.5L大瓶) 3,000"
+  }
+]

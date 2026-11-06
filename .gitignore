@@ -1,0 +1,21 @@
+# Python virtual environment and cache
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables and secrets
+.env
+.env.local
+
+# Node / Netlify build artifacts
+node_modules/
+.netlify/
+
+# Temporary / Debug files
+*.zip
+*.log
+/qrcode.png
+.DS_Store
+Thumbs.db

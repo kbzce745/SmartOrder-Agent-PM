@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中韩双语智能点单系统 | Bilingual Smart Ordering</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="mode-switcher" id="mode-switcher">
+            <button type="button" class="mode-btn active" data-mode="customer">顾客点餐端 (Customer)</button>
+            <button type="button" class="mode-btn" data-mode="merchant">老板管理端 (Merchant Agent)</button>
+        </div>
+        <div class="header-badge">BILINGUAL SMART MENU</div>
+        <h1>Our Menu</h1>
+        <p class="header-sub">맛있는 식사 하세요 (Enjoy your meal)</p>
+        <p class="header-phone">订餐电话 / 전화: <a href="tel:0503-7574-1423">0503-7574-1423</a></p>
+    </header>
+
+    <!-- CUSTOMER VIEW -->
+    <div id="customer-view">
+
+    <!-- Sticky Category Navigation -->
+    <nav class="category-nav" id="category-nav" aria-label="菜品分类导航">
+        <div class="category-nav-inner" id="category-tabs">
+            <button class="cat-tab active" data-category="pizza">手工披萨</button>
+            <button class="cat-tab" data-category="rice">盖饭与炒饭</button>
+            <button class="cat-tab" data-category="noodle">年糕与意面</button>
+            <button class="cat-tab" data-category="snack">烤鸡与炸物</button>
+            <button class="cat-tab" data-category="dumpling">水饺与点心</button>
+            <button class="cat-tab" data-category="drink">饮品与咖啡</button>
+        </div>
+    </nav>
+
+    <main class="menu-container" id="menu-container">
+        <div class="loader">正在加载菜单数据...</div>
+    </main>
+    </div><!-- End of #customer-view -->
+
+    <!-- MERCHANT AGENT WORKBENCH VIEW -->
+    <section id="merchant-view" class="merchant-container hidden">
+        <!-- Module 0: Schema Health & Audit Dashboard -->
+        <div class="merchant-card">
+            <div class="merchant-card-header">
+                <div>
+                    <span class="merchant-tag">MODULE 01 / SCHEMA AUDIT</span>
+                    <h2>菜单数字化健康度与自检看板</h2>
+                </div>
+                <div class="merchant-header-right">
+                    <span id="merchant-audit-badge" class="audit-pass-badge">Schema 自检通过 (PASSED)</span>
+                    <button type="button" id="merchant-logout-btn" class="merchant-logout-btn">锁定退出</button>
+                </div>
+            </div>
+            <div class="audit-stats-grid" id="audit-stats-grid">
+                <div class="stat-box">
+                    <span class="stat-label">实拍菜单页数</span>
+                    <span class="stat-value" id="stat-pages">11</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">结构化菜品总数</span>
+                    <span class="stat-value" id="stat-items">85</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">中韩双语完备率</span>
+                    <span class="stat-value" id="stat-bilingual">100%</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">韩元价格合规率</span>
+                    <span class="stat-value" id="stat-price-valid">100%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 1: Pain Point 2 Verification - OCR & New Dish Structuring Agent -->
+        <div class="merchant-card">
+            <div class="merchant-card-header">
+                <div>
+                    <span class="merchant-tag">MODULE 02 / PAIN POINT 2 VERIFICATION</span>
+                    <h2>OCR 乱序文本重构与新菜上架 Agent</h2>
+                    <p class="merchant-desc">解决传统 EasyOCR 正则切词漏菜与错位问题，自动对齐中韩双语名称、校验价格并实时上架到顾客端菜单</p>
+                </div>
+            </div>
+
+            <div class="preset-bar">
+                <span class="preset-label">一键加载验证案例:</span>
+                <button type="button" class="preset-chip" id="case-ocr-fix-btn">真实案例1：修复 9.jpg 水饺页漏识别「芹菜水饺」</button>
+                <button type="button" class="preset-chip" id="case-new-dish-btn">真实案例2：一句话上架2道新菜并同步至顾客端</button>
+            </div>
+
+            <div class="merchant-input-group">
+                <label for="ocr-raw-input">输入原始 OCR 识别文本或店主上新指令:</label>
+                <textarea id="ocr-raw-input" rows="3" placeholder="粘贴 EasyOCR 识别出的韩文/中文乱序文本，或输入如：新增韩式炸酱面 짜장면 7500韩元（支持大小份）..."></textarea>
+                <div class="merchant-btn-row">
+                    <button type="button" id="run-ocr-agent-btn" class="merchant-primary-btn">运行结构化提取与 Schema 自检</button>
+                    <button type="button" id="apply-new-dish-btn" class="merchant-secondary-btn hidden">将解析菜品实时上架至顾客端预览</button>
+                </div>
+            </div>
+
+            <div id="ocr-comparison-result" class="merchant-result-box hidden"></div>
+        </div>
+
+        <!-- Module 2: Natural Language Bulk Price & Menu Maintenance Agent -->
+        <div class="merchant-card">
+            <div class="merchant-card-header">
+                <div>
+                    <span class="merchant-tag">MODULE 03 / NATURAL LANGUAGE MENU OPS</span>
+                    <h2>自然语言批量改价与菜单维护 Agent</h2>
+                    <p class="merchant-desc">店主无需手动编辑 JSON，输入调价指令即可生成修改前后 Diff 对比表，校验通过后立即在顾客端生效</p>
+                </div>
+            </div>
+
+            <div class="preset-bar">
+                <span class="preset-label">快捷指令验证:</span>
+                <button type="button" class="preset-chip bulk-chip" data-cmd="把所有披萨价格上调 1000 韩元">所有披萨上调 1,000 KRW</button>
+                <button type="button" class="preset-chip bulk-chip" data-cmd="把所有水饺价格下调 500 韩元">所有水饺下调 500 KRW</button>
+                <button type="button" class="preset-chip bulk-chip" data-cmd="把所有盖饭价格上调 500 韩元">所有盖饭上调 500 KRW</button>
+                <button type="button" class="preset-chip" id="reset-menu-price-btn">重置回门店初始价格</button>
+            </div>
+
+            <div class="merchant-input-group">
+                <div class="merchant-inline-form">
+                    <input type="text" id="bulk-instruct-input" placeholder="例如：把所有披萨价格上调 1000 韩元">
+                    <button type="button" id="run-bulk-instruct-btn" class="merchant-primary-btn">执行调价并生成 Diff</button>
+                    <button type="button" id="export-menu-json-btn" class="merchant-secondary-btn">导出 menu.json</button>
+                </div>
+            </div>
+
+            <div id="bulk-diff-result" class="merchant-result-box hidden"></div>
+        </div>
+
+        <!-- Module 3: WeChat Unstructured Order Parser & Kitchen Ticket Generator -->
+        <div class="merchant-card">
+            <div class="merchant-card-header">
+                <div>
+                    <span class="merchant-tag">MODULE 04 / WECHAT ORDER PARSER</span>
+                    <h2>微信非结构化点单解析与后厨出餐单生成器</h2>
+                    <p class="merchant-desc">当顾客未用网页、直接在微信发长段语音转文字点单时，协助老板一键对齐菜品、精准算账并输出纯韩文后厨单</p>
+                </div>
+            </div>
+
+            <div class="preset-bar">
+                <span class="preset-label">测试顾客微信原话:</span>
+                <button type="button" class="preset-chip" id="case-wechat-1">测试案例A：多规格披萨+炒饭+忌口算账</button>
+                <button type="button" class="preset-chip" id="case-wechat-2">测试案例B：宿舍聚餐多菜品混合点单</button>
+            </div>
+
+            <div class="merchant-input-group">
+                <textarea id="wechat-raw-input" rows="3" placeholder="粘贴顾客在微信发来的点单文字..."></textarea>
+                <div class="merchant-btn-row">
+                    <button type="button" id="parse-wechat-order-btn" class="merchant-primary-btn">解析订单、核算总价并生成韩文后厨单</button>
+                </div>
+            </div>
+
+            <div id="wechat-parse-result" class="merchant-result-box hidden"></div>
+        </div>
+    </section>
+
+    <!-- Floating AI Ordering Trigger Button -->
+    <button id="ai-fab-btn" class="ai-fab-btn" type="button" aria-label="打开AI点单助手">
+        <span class="ai-fab-dot"></span>
+        <span>AI 导购与备注翻译</span>
+    </button>
+
+    <!-- Shopping Cart Bar -->
+    <div id="cart-bar" class="cart-bar hidden">
+        <div class="cart-info" id="open-cart-trigger">
+            <div class="cart-summary-left">
+                <span class="cart-count-badge" id="cart-total-count">0</span>
+                <span class="cart-total-label">总计 (KRW):</span>
+                <span id="cart-total-price" class="cart-total-price">0</span>
+            </div>
+            <div class="cart-view-detail">生成双语小票 / 查看明细</div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">复制成功，请前往微信粘贴发送给老板</div>
+
+    <!-- Cart & Bilingual Receipt Overlay -->
+    <div id="cart-overlay" class="cart-overlay hidden">
+        <div class="cart-overlay-backdrop" id="cart-backdrop"></div>
+        <div class="cart-overlay-content">
+            <div class="cart-overlay-header">
+                <div>
+                    <h2>已选菜品与双语备注</h2>
+                    <p class="overlay-subtitle">自动生成中韩对照单据，直接粘贴至微信即可出餐</p>
+                </div>
+                <button id="close-cart-btn" class="close-btn" type="button">&times;</button>
+            </div>
+
+            <div class="room-input-container">
+                <label class="field-label" for="room-number">门牌号 / 房间号 (必填)</label>
+                <input type="text" id="room-number" placeholder="例如：302室 / A栋401">
+            </div>
+
+            <div class="note-section">
+                <div class="note-header">
+                    <span class="field-label">特殊忌口与配送备注 (自动中韩双语同步)</span>
+                    <button type="button" id="clear-notes-btn" class="text-link-btn">清空备注</button>
+                </div>
+                <div class="quick-note-tags" id="quick-note-tags">
+                    <button type="button" class="note-tag" data-zh="不要香菜" data-ko="고수 빼주세요">不要香菜</button>
+                    <button type="button" class="note-tag" data-zh="不要洋葱" data-ko="양파 빼주세요">不要洋葱</button>
+                    <button type="button" class="note-tag" data-zh="不要青椒" data-ko="피망 빼주세요">不要青椒</button>
+                    <button type="button" class="note-tag" data-zh="少辣" data-ko="덜 맵게 해주세요">少辣</button>
+                    <button type="button" class="note-tag" data-zh="放门口勿按铃" data-ko="문 앞에 두고 벨 누르지 마세요">放门口勿按铃</button>
+                    <button type="button" class="note-tag" data-zh="需要一次性餐具" data-ko="일회용 수저 챙겨주세요">需要餐具</button>
+                </div>
+                <div class="dual-note-inputs">
+                    <input type="text" id="order-note-zh" placeholder="中文备注（可通过 AI 助手自动翻译韩文）">
+                    <input type="text" id="order-note-ko" placeholder="한국어 요청사항 (韩文备注，供老板后厨查看)">
+                </div>
+            </div>
+
+            <div id="cart-items-list" class="cart-items-list">
+                <!-- Dynamically populated -->
+            </div>
+
+            <div class="cart-overlay-footer">
+                <button id="clear-cart-btn" class="secondary-btn" type="button">清空重选</button>
+                <button id="copy-order-btn" class="copy-order-btn" type="button">一键复制中韩点单发微信</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pizza Customization Modal -->
+    <div id="pizza-modal" class="modal hidden">
+        <div class="modal-backdrop" id="pizza-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="pizza-modal-title">定制披萨</h2>
+                <button id="close-pizza-modal" class="close-btn" type="button">&times;</button>
+            </div>
+            <div class="modal-body" id="pizza-modal-body">
+                <!-- Dynamically populated options -->
+            </div>
+            <div class="modal-footer">
+                <div class="modal-total">单份小计: <span id="pizza-modal-price" class="modal-price-val">0</span></div>
+                <button id="pizza-modal-add-btn" class="modal-add-btn" type="button">加入购物车</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Ordering Agent Drawer -->
+    <div id="ai-drawer" class="ai-drawer hidden">
+        <div class="ai-drawer-backdrop" id="ai-backdrop"></div>
+        <div class="ai-drawer-content">
+            <div class="ai-drawer-header">
+                <div class="ai-header-title">
+                    <div class="ai-title-row">
+                        <h2>AI 点单与双语助手</h2>
+                        <span id="ai-engine-badge" class="ai-engine-badge">DeepSeek-V3 驱动</span>
+                    </div>
+                    <p>支持自然语言凑单、复杂披萨规格一句话加购、特殊忌口自动转译韩语</p>
+                </div>
+                <div class="ai-header-actions">
+                    <button id="ai-key-toggle-btn" class="ai-config-btn hidden" type="button">本地调试 Key</button>
+                    <button id="close-ai-btn" class="close-btn" type="button">&times;</button>
+                </div>
+            </div>
+
+            <!-- Optional API Key Configuration Panel -->
+            <div id="ai-config-panel" class="ai-config-panel hidden">
+                <label for="deepseek-key-input">配置 DeepSeek API Key（可选，留空则使用服务端环境变量或本地智能引擎）</label>
+                <div class="ai-config-row">
+                    <input type="password" id="deepseek-key-input" placeholder="sk-...">
+                    <button id="save-api-key-btn" type="button" class="ai-save-key-btn">保存</button>
+                </div>
+            </div>
+
+            <!-- Quick Prompt Chips -->
+            <div class="ai-chips-bar" id="ai-chips-bar">
+                <button type="button" class="ai-chip" data-prompt="我们3个人聚餐，预算40000韩元以内，不要太辣，帮我搭配一套有披萨有小吃的方案">3人4万韩元不辣配餐</button>
+                <button type="button" class="ai-chip" data-prompt="来一份大号烤牛肉披萨，换芝士饼边，加一份玉米，再配一瓶1.25L大可乐">大号烤牛肉披萨+芝士边+大可乐</button>
+                <button type="button" class="ai-chip" data-prompt="门牌号305，备注：披萨不要青椒和洋葱，送到请放门口不要按门铃">忌口翻译：不要青椒洋葱+放门口</button>
+            </div>
+
+            <!-- Conversation Messages -->
+            <div class="ai-messages" id="ai-messages">
+                <div class="ai-msg assistant">
+                    <div class="ai-msg-bubble">
+                        您好，我是中韩双语智能点单助手。您可以直接告诉我：<br>
+                        1. <strong>人数与预算凑单</strong>（如：“4个人5万韩元怎么点划算”）<br>
+                        2. <strong>一句话定制加购</strong>（如：“要个大号什锦披萨换芝士边，再来份小份虾仁炒饭”）<br>
+                        3. <strong>特殊忌口转译韩文</strong>（如：“不要香菜和洋葱，放门口别按门铃”）
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <form id="ai-input-form" class="ai-input-bar">
+                <input type="text" id="ai-user-input" maxlength="120" placeholder="输入点单需求、预算或中文忌口备注 (限120字)..." autocomplete="off">
+                <button type="submit" id="ai-send-btn" class="ai-send-btn">发送</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Merchant Authentication Modal -->
+    <div id="merchant-auth-modal" class="modal hidden">
+        <div class="modal-backdrop" id="merchant-auth-backdrop"></div>
+        <div class="modal-content auth-modal-content">
+            <div class="modal-header">
+                <h2>老板管理端权限验证</h2>
+                <button id="close-auth-modal" class="close-btn" type="button">&times;</button>
+            </div>
+            <form id="merchant-auth-form" class="auth-modal-body">
+                <p class="auth-modal-desc">老板管理端涉及全店菜单调价、新菜上架与后厨账单解析，请输入门店管理员访问密码：</p>
+                <input type="password" id="merchant-pwd-input" placeholder="请输入管理员密码" autocomplete="current-password" required>
+                <div id="merchant-auth-error" class="auth-error-msg hidden">密码不正确，请重新输入</div>
+                <div class="auth-modal-actions">
+                    <button type="button" id="cancel-auth-btn" class="secondary-btn">取消</button>
+                    <button type="submit" class="merchant-primary-btn">验证并进入工作台</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="agent-ui.js"></script>
+    <script src="merchant-ui.js"></script>
+</body>
+</html>
