@@ -319,22 +319,28 @@ body {
 /* Floating AI Button */
 .ai-fab-btn {
     position: fixed;
-    right: 16px;
-    bottom: 82px;
-    z-index: 95;
+    left: 16px;
+    bottom: 24px;
+    z-index: 990;
     background: var(--ai-primary);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 11px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 10px 16px;
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
-    transition: transform 0.2s, background 0.2s;
+    transition: bottom 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s, background 0.2s;
+    white-space: nowrap;
+}
+
+/* Automatically lift AI button when the bottom Cart Bar is visible so they never overlap */
+body:has(#cart-bar:not(.hidden)) .ai-fab-btn {
+    bottom: 78px;
 }
 
 .ai-fab-btn:hover {
@@ -351,6 +357,7 @@ body {
     border-radius: 50%;
     background: #38bdf8;
     box-shadow: 0 0 8px #38bdf8;
+    flex-shrink: 0;
 }
 
 /* Cart Bar */
@@ -359,10 +366,13 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 62px;
     background: #ffffff;
-    padding: 14px 20px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-    z-index: 100;
+    padding: 0 16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 2147483640;
+    display: flex;
+    align-items: center;
     transform: translateY(0);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border-top: 1px solid var(--border-color);
@@ -379,43 +389,58 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .cart-summary-left {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .cart-count-badge {
     background: var(--accent);
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     padding: 2px 8px;
     border-radius: 999px;
+    flex-shrink: 0;
 }
 
 .cart-total-label {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: var(--text-sub);
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .cart-total-price {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.cart-currency {
+    font-size: 0.78rem;
+    font-weight: 600;
     color: var(--accent);
 }
 
 .cart-view-detail {
-    font-size: 0.92rem;
+    font-size: 0.86rem;
     font-weight: 600;
-    color: var(--text-main);
-    background: #f1f5f9;
+    color: #ffffff;
+    background: var(--accent);
     padding: 8px 14px;
     border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* Toast */
@@ -430,7 +455,7 @@ body {
     border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 500;
-    z-index: 1500;
+    z-index: 2147483647;
     opacity: 0;
     pointer-events: none;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -450,7 +475,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    z-index: 2147483642;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -671,7 +696,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1100;
+    z-index: 2147483644;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -835,7 +860,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1200;
+    z-index: 2147483645;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -1638,11 +1663,24 @@ body {
     }
 
     .ai-fab-btn {
-        right: 12px;
-        bottom: 76px;
+        left: 12px;
+        right: auto;
+        bottom: 20px;
         padding: 10px 14px;
         font-size: 0.84rem;
     }
+
+    body:has(#cart-bar:not(.hidden)) .ai-fab-btn {
+        bottom: 76px;
+    }
+}
+
+/* Hide third-party injected floating Netlify badges if present */
+iframe[src*="netlify"],
+a[href*="netlify.com"][style*="fixed"],
+div[id*="netlify-badge"],
+div[class*="netlify-badge"] {
+    display: none !important;
 }
 
 
