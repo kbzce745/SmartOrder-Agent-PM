@@ -91,7 +91,7 @@ class LocalOrderingRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             api_key = custom_key or os.environ.get("DEEPSEEK_API_KEY", "").strip()
             base_url = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com").rstrip("/")
-            model = os.environ.get("DEEPSEEK_MODEL", "deepseek-chat")
+            model = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 
             if not api_key:
                 self._send_json(200, {"fallback": True, "reason": "missing_api_key"})
@@ -111,6 +111,7 @@ class LocalOrderingRequestHandler(http.server.SimpleHTTPRequestHandler):
                     "model": model,
                     "temperature": 0.1,
                     "max_tokens": 350,
+                    "thinking": {"type": "disabled"},
                     "response_format": {"type": "json_object"},
                     "messages": [
                         {"role": "system", "content": get_system_prompt()},

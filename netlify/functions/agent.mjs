@@ -269,7 +269,7 @@ export const handler = async (event) => {
 
     const apiKey = customApiKey || process.env.DEEPSEEK_API_KEY;
     const baseUrl = (process.env.DEEPSEEK_BASE_URL || "https://api.deepseek.com").replace(/\/+$/, "");
-    const model = process.env.DEEPSEEK_MODEL || "deepseek-chat";
+    const model = process.env.DEEPSEEK_MODEL || "deepseek-flash";
 
     if (!apiKey) {
       return {
@@ -298,6 +298,7 @@ export const handler = async (event) => {
         model,
         temperature: 0.1,
         max_tokens: 350,
+        thinking: { type: "disabled" },
         response_format: { type: "json_object" },
         messages: [
           { role: "system", content: STATIC_MENU_SYSTEM_PROMPT },
