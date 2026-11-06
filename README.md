@@ -21,11 +21,11 @@
 
 ![老板管理端工作台与真实案例验证](docs/assets/merchant-workbench-demo.png)
 
-### 3. 移动端自适应布局与扫码入口
+### 3. 移动端自适应布局与版本演进扫码对比
 
-| 移动端自适应视口 (`390x844` 预览) | 线上部署扫码体验 |
+| 移动端自适应视口 (`390x844` v2.0 预览) | v1.0 初版线上扫码 (重构前对比基线) |
 | :---: | :---: |
-| ![移动端自适应界面](docs/assets/mobile-responsive-demo.png) | ![线上二维码](docs/assets/qrcode.png) |
+| ![移动端自适应界面](docs/assets/mobile-responsive-demo.png) | ![v1.0 线上二维码](docs/assets/qrcode.png) |
 
 ---
 
