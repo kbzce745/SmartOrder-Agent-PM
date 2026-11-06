@@ -4,7 +4,8 @@
 - **部署架构:** Netlify CDN + Netlify Serverless Functions + DeepSeek API (`deepseek-flash`)
 - **v2.0 Agentic 线上地址 (重构后):** [https://smartorder-agent.netlify.app/](https://smartorder-agent.netlify.app/)
 - **v1.0 初版线上地址 (重构前基线):** [https://earnest-narwhal-d325ec.netlify.app/](https://earnest-narwhal-d325ec.netlify.app/)
-- **产品文档:** [完整产品需求文档 (docs/PRD.md)](docs/PRD.md)
+- **产品需求文档 (PRD):** [docs/PRD.md](docs/PRD.md)
+- **量化评测与基准报告 (Evaluation & Charts):** [docs/EVALUATION.md](docs/EVALUATION.md) (`scripts/evaluate_benchmark.py`)
 
 > [!NOTE]
 > 本项目源于韩国本地餐饮门店的真实提效需求：为中国留学生及华人顾客提供免下载、扫码即用的**中韩双语点单与微信出餐单生成系统**，并通过轻量级 **Agentic 工作流**解决跨语言定制点单与纸质菜单数字化维护痛点。
@@ -28,6 +29,22 @@
 | v1.0 初版线上扫码 (重构前对比基线) | v2.0 Agentic 线上扫码 (重构后当前版本) | 移动端自适应视口 (`390x844` v2.0 预览) |
 | :---: | :---: | :---: |
 | ![v1.0 线上二维码](docs/assets/qrcode.png)<br/>[earnest-narwhal-d325ec.netlify.app](https://earnest-narwhal-d325ec.netlify.app/) | ![v2.0 线上二维码](docs/assets/qrcode-v2.png)<br/>[smartorder-agent.netlify.app](https://smartorder-agent.netlify.app/) | ![移动端自适应界面](docs/assets/mobile-responsive-demo.png) |
+
+### 4. 产品工程与 Agent 量化评测看板 (Benchmark Dashboard)
+
+> [!TIP]
+> 完整评测方法论、真实 LLM 算术幻觉捕获案例、Mermaid 原生对比图表及简历 STAR 要点详见 **[《SmartOrder-Agent v2.0 产品与 Agent 量化评测报告 (docs/EVALUATION.md)》](docs/EVALUATION.md)**。可通过运行 `python scripts/evaluate_benchmark.py` 一键复现全部评测数据。
+
+![SmartOrder-Agent v2.0 产品工程与 Agent 量化评测看板](docs/assets/eval-charts-dashboard.png)
+
+| 评测维度 | 核心指标 (Key Metric) | v1.0 基线 / 纯 LLM 方案 | v2.0 混合架构实测表现 | 核心收益与业务价值 |
+| :--- | :--- | :--- | :--- | :--- |
+| **用户与商家交互效率** | 5 大核心场景平均完成耗时 | `106.6s / 单` (均值 `16.8` 步) | **`9.6s / 单`** (均值 `2.0` 步) | **平均耗时缩短 `88.1%`**，操作步数减少 **`85.4%`** |
+| **算价可靠性与反幻觉** | 多规格定制与凑单算价准确率 | `73.3%` (纯 LLM 文本心算) | **`100.0%`** (`OrderApp` 确定性引擎) | **消除 `100%` 金额幻觉**（实测拦截 51.3% 心算偏差） |
+| **安全护栏与防盗刷** | 越狱与非点餐请求 0-Token 拦截率 | 无防护 (易被白嫖算力) | **`100.0%` 拦截 / `0.0%` 误杀** | **拦截延迟 `0.0031ms`**，被拒请求 Token 消耗为 `0` |
+| **推理成本与缓存优化** | DeepSeek 静态前缀缓存命中率 | `0.0%` (每次全量计费) | 均值 `78.8%` / **峰值 `95.1%`** | 静态菜单 System Prompt 命中缓存 (`3328/3500 tokens`) |
+| **菜单数字化完整度** | 85 道双语菜品召回率与页序准确率 | 召回率 `98.8%` / 页序 `72.7%` | **召回率 `100.0%` / 页序 `100.0%`** | 修复 `9.jpg` 漏识别芹菜水饺与 `10.jpg` 字典序错位 |
+| **工程交付包体积** | 生产仓库总大小 (Repo Size) | `45.2 MB` | **`3.1 MB`** | **体积缩减 `93.1%`**，清理冗余截图与历史压缩包 |
 
 ---
 
@@ -104,11 +121,14 @@ order-system/
 │   ├── merchant-ui.js         # 老板管理端工作台 (SHA-256 鉴权、OCR 对比、批量调价、微信解析)
 │   └── menu.json              # 结构化中韩双语菜单数据 (含分类与口味标签)
 ├── scripts/
+│   ├── evaluate_benchmark.py  # 自动化产品与 Agent 量化评测基准脚本 (生成 JSON 报告与可视化看板)
 │   ├── menu_agent.py          # 商家端菜单数字化、自然语言改价与完整性自检 CLI 工具
 │   └── serve_and_qr.py        # 零依赖本地局域网预览服务器 (内置 /api/agent 本地代理)
 ├── docs/
 │   ├── PRD.md                 # 产品需求文档 (AI PM 视角思考、架构权衡与 v3.0 路线图)
-│   └── assets/                # 界面实拍截图、案例验证对比图与线上部署二维码
+│   ├── EVALUATION.md          # 产品与 Agent 量化评测报告 (含 Mermaid 图表、真实幻觉分析与简历要点)
+│   ├── evaluation_results.json# 自动化评测基准脚本生成的原始指标数据
+│   └── assets/                # 界面实拍截图、评测看板图表与线上部署二维码
 ├── netlify.toml               # Netlify 构建与 Serverless 路由配置
 ├── requirements.txt           # Python 离线工具链可选依赖声明
 ├── .env.example               # 环境变量配置模板

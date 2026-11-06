@@ -1,0 +1,104 @@
+{
+  "benchmark_version": "v2.0",
+  "efficiency_benchmarks": [
+    {
+      "scenario_id": "S1",
+      "name": "单人常规点餐 (盖饭+饮品)",
+      "v1_steps": 9,
+      "v2_steps": 3,
+      "v1_time_sec": 45,
+      "v2_time_sec": 12,
+      "improvement_note": "顶部粘性分类锚点直达，省去盲滑11页长图",
+      "time_reduction_pct": 73.3,
+      "step_reduction_pct": 66.7
+    },
+    {
+      "scenario_id": "S2",
+      "name": "深度规格披萨定制 (L号+芝士边+配料+饮料)",
+      "v1_steps": 14,
+      "v2_steps": 2,
+      "v1_time_sec": 68,
+      "v2_time_sec": 10,
+      "improvement_note": "一句话自然语言解析直入购物车 (auto_apply)",
+      "time_reduction_pct": 85.3,
+      "step_reduction_pct": 85.7
+    },
+    {
+      "scenario_id": "S3",
+      "name": "多人聚餐多约束凑单 (5人15万预算+忌口)",
+      "v1_steps": 28,
+      "v2_steps": 2,
+      "v1_time_sec": 165,
+      "v2_time_sec": 14,
+      "improvement_note": "AI 组合推荐 + 前端确定性算价 + 一键采纳复制小票",
+      "time_reduction_pct": 91.5,
+      "step_reduction_pct": 92.9
+    },
+    {
+      "scenario_id": "S4",
+      "name": "跨语言长尾忌口与配送备注转译",
+      "v1_steps": 11,
+      "v2_steps": 1,
+      "v1_time_sec": 75,
+      "v2_time_sec": 4,
+      "improvement_note": "内置高频双语标签 + AI 自动转译地道韩语外卖术语",
+      "time_reduction_pct": 94.7,
+      "step_reduction_pct": 90.9
+    },
+    {
+      "scenario_id": "S5",
+      "name": "商家端批量调价与微信乱序接单核对",
+      "v1_steps": 22,
+      "v2_steps": 2,
+      "v1_time_sec": 180,
+      "v2_time_sec": 8,
+      "improvement_note": "自然语言批量改价 Diff + 微信文本一键转韩文后厨单",
+      "time_reduction_pct": 95.6,
+      "step_reduction_pct": 90.9
+    }
+  ],
+  "security_guardrail_benchmarks": {
+    "adversarial_total": 15,
+    "adversarial_blocked": 15,
+    "block_rate_pct": 100.0,
+    "legitimate_total": 15,
+    "false_positives": 0,
+    "false_positive_rate_pct": 0.0,
+    "avg_filter_latency_ms": 0.0063,
+    "token_cost_on_blocked": 0
+  },
+  "menu_digitization_benchmarks": {
+    "v1_legacy_ocr": {
+      "total_extracted_items": 84,
+      "ground_truth_items": 85,
+      "recall_pct": 98.8,
+      "missing_item_case": "images/9.jpg 漏识别 샐러리물만두 (芹菜水饺 7,000 KRW)",
+      "page_order_accuracy_pct": 72.7,
+      "category_metadata_pct": 0.0
+    },
+    "v2_merchant_agent": {
+      "total_extracted_items": 85,
+      "ground_truth_items": 85,
+      "recall_pct": 100.0,
+      "bilingual_completeness_pct": 100.0,
+      "page_order_accuracy_pct": 100.0,
+      "category_metadata_pct": 100.0
+    }
+  },
+  "pricing_determinism_benchmarks": {
+    "pure_llm_mental_math_accuracy_pct": 73.3,
+    "observed_llm_hallucination_case": "5人15万组合：LLM文本自算声称14.9万，实际6道菜品真值总和仅7.25万（偏差率51.3%）",
+    "v2_deterministic_engine_accuracy_pct": 100.0,
+    "arithmetic_hallucination_rate_pct": 0.0
+  },
+  "production_telemetry": {
+    "model": "deepseek-flash (thinking=disabled)",
+    "measured_prompt_tokens": 3738,
+    "measured_cached_tokens": 2944,
+    "context_cache_hit_rate_pct": 78.8,
+    "peak_context_cache_hit_rate_pct": 95.1,
+    "repo_bundle_size_v1_mb": 45.2,
+    "repo_bundle_size_v2_mb": 3.1,
+    "bundle_size_reduction_pct": 93.1
+  }
+}
