@@ -1,7 +1,9 @@
 # Bilingual Smart Ordering System (中韩双语智能点单系统)
 
 - **项目类型:** 真实业务落地项目 (AI Product Management + Full-Stack Agentic Engineering)
-- **部署架构:** Netlify CDN + Netlify Serverless Functions + DeepSeek-V3 (`deepseek-chat`)
+- **部署架构:** Netlify CDN + Netlify Serverless Functions + DeepSeek API (`deepseek-flash`)
+- **v2.0 Agentic 线上地址 (重构后):** [https://smartorder-agent.netlify.app/](https://smartorder-agent.netlify.app/)
+- **v1.0 初版线上地址 (重构前基线):** [https://earnest-narwhal-d325ec.netlify.app/](https://earnest-narwhal-d325ec.netlify.app/)
 - **产品文档:** [完整产品需求文档 (docs/PRD.md)](docs/PRD.md)
 
 > [!NOTE]
@@ -21,11 +23,11 @@
 
 ![老板管理端工作台与真实案例验证](docs/assets/merchant-workbench-demo.png)
 
-### 3. 移动端自适应布局与版本演进扫码对比
+### 3. 移动端自适应布局与 v1.0 / v2.0 线上扫码对比
 
-| 移动端自适应视口 (`390x844` v2.0 预览) | v1.0 初版线上扫码 (重构前对比基线) |
-| :---: | :---: |
-| ![移动端自适应界面](docs/assets/mobile-responsive-demo.png) | ![v1.0 线上二维码](docs/assets/qrcode.png) |
+| v1.0 初版线上扫码 (重构前对比基线) | v2.0 Agentic 线上扫码 (重构后当前版本) | 移动端自适应视口 (`390x844` v2.0 预览) |
+| :---: | :---: | :---: |
+| ![v1.0 线上二维码](docs/assets/qrcode.png)<br/>[earnest-narwhal-d325ec.netlify.app](https://earnest-narwhal-d325ec.netlify.app/) | ![v2.0 线上二维码](docs/assets/qrcode-v2.png)<br/>[smartorder-agent.netlify.app](https://smartorder-agent.netlify.app/) | ![移动端自适应界面](docs/assets/mobile-responsive-demo.png) |
 
 ---
 
