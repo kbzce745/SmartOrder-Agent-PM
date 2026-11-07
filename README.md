@@ -6,7 +6,6 @@
 - **v1.0 初版线上地址 (重构前基线):** [https://earnest-narwhal-d325ec.netlify.app/](https://earnest-narwhal-d325ec.netlify.app/)
 - **产品需求文档 (PRD):** [docs/PRD.md](docs/PRD.md)
 - **量化评测与基准报告 (Evaluation & Charts):** [docs/EVALUATION.md](docs/EVALUATION.md) (`scripts/evaluate_benchmark.py`)
-- **面向学生用户的版本更新公告 (Release Notes):** [docs/RELEASE_NOTES_v2.0.md](docs/RELEASE_NOTES_v2.0.md)
 
 > [!NOTE]
 > 本项目源于韩国本地餐饮门店的真实提效需求：为中国留学生及华人顾客提供免下载、扫码即用的**中韩双语点单与微信出餐单生成系统**，并通过轻量级 **Agentic 工作流**解决跨语言定制点单与纸质菜单数字化维护痛点。
